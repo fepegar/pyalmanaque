@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    transition: background-color 0.3s;
+}
+
+/* Season themes */
+.season-autumn { background: linear-gradient(135deg, #f5e6d0, #e8c9a0); color: #4a3520; }
+.season-winter { background: linear-gradient(135deg, #dce8f0, #b8cfe0); color: #2a3a4a; }
+.season-spring { background: linear-gradient(135deg, #e0f0d8, #c8e0b0); color: #2a4020; }
+.season-summer { background: linear-gradient(135deg, #f5f0d0, #e8d888); color: #4a4020; }
+.season-special { background: linear-gradient(135deg, #dce0f5, #c0c8e8); color: #2a2a4a; }
+
+main {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.gregorian {
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+/* Republican date */
+.republican-date {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+}
+
+.decade-day {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+}
+
+.date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav-arrow {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.nav-arrow:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.full-date {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.month-info {
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.today-btn {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3em 1em;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    opacity: 0.6;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.today-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* Thing of the day */
+.thing-of-day {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.thing-of-day h2 {
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+}
+
+.thing-english {
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+}
+
+.category {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.2em 0.8em;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.badge-plant { background: #4a7c3f; color: #fff; }
+.badge-animal { background: #8b5e3c; color: #fff; }
+.badge-tool { background: #5a5a5a; color: #fff; }
+.badge-mineral { background: #6a7b8a; color: #fff; }
+.badge-celebration { background: #8b3a5a; color: #fff; }
+
+.image-container {
+    margin: 1rem auto;
+    max-width: 400px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 350px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.placeholder {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+.wiki-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5em 1.2em;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.wiki-link:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+footer {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    font-style: italic;
+}

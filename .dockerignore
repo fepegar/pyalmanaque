@@ -1,0 +1,7 @@
+.venv
+__pycache__
+*.pyc
+.git
+verify_*.py
+extract_days.py
+test_calendar.py

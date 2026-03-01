@@ -1,0 +1,14 @@
+[project]
+name = "pyalmanaque"
+version = "0.1.0"
+description = "French Republican Calendar almanac web app"
+requires-python = ">=3.10"
+dependencies = [
+    "flask>=3.0",
+    "convertdate>=2.4",
+    "requests>=2.31",
+    "gunicorn>=22.0",
+]
+
+[project.scripts]
+pyalmanaque = "app:main"

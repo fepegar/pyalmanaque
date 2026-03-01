@@ -1,0 +1,6 @@
+services:
+  - type: web
+    runtime: docker
+    name: pyalmanaque
+    plan: free
+    healthCheckPath: /

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyAlmanaque — Calendrier Républicain</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="season-{{ rep.season }}">
+    <main>
+        <header>
+            <h1>Almanaque Républicain</h1>
+            <p class="gregorian">{{ rep.gregorian_date.strftime('%d/%m/%Y') }}</p>
+        </header>
+
+        <section class="republican-date">
+            {% if rep.decade_day_name %}
+            <div class="decade-day">{{ rep.decade_day_name }}</div>
+            {% endif %}
+            <div class="date-nav">
+                <a class="nav-arrow" href="?date={{ prev_date }}">&larr;</a>
+                <div class="full-date">{{ rep.formatted }}</div>
+                <a class="nav-arrow" href="?date={{ next_date }}">&rarr;</a>
+            </div>
+            <div class="month-info">
+                <span class="month-name">{{ rep.month_name }}</span>
+                &mdash;
+                <span class="month-translation">{{ rep.month_translation }}</span>
+            </div>
+            {% if not is_today %}
+            <a class="today-btn" href="/">Today</a>
+            {% endif %}
+        </section>
+
+        <section class="thing-of-day">
+            <h2>Jour {{ "de l'" if rep.thing_of_day[0] in "AEIOUÉÈÊËÀÂÎÏÔÙÛ" else "du " if rep.category != "celebration" else "de la " }}{{ rep.thing_of_day }}</h2>
+            <div class="thing-english">{{ image.en_name }}</div>
+            <span class="category badge-{{ rep.category }}">{{ rep.category }}</span>
+
+            <div class="image-container">
+                {% if image.thumbnail_url %}
+                <img src="{{ image.thumbnail_url }}"
+                     alt="{{ rep.thing_of_day }}"
+                     referrerpolicy="no-referrer">
+                {% else %}
+                <div class="placeholder">
+                    <p>Pas d'image disponible</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <a class="wiki-link" href="{{ image.page_url }}" target="_blank" rel="noopener">
+                {{ image.en_name }} on Wikipedia
+            </a>
+        </section>
+
+        <footer>
+            <p>Calendrier républicain d'après Fabre d'Églantine</p>
+        </footer>
+    </main>
+</body>
+</html>
