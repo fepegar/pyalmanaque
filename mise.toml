@@ -1,0 +1,27 @@
+[tasks.dev]
+description = "Run local dev server"
+run = "uv run flask --app app run"
+
+[tasks."azure:login"]
+description = "Log in to Azure"
+run = "az login"
+
+[tasks."azure:group"]
+description = "Create Azure resource group"
+depends = ["azure:login"]
+run = "az group create --name pyalmanaque-rg --location westeurope"
+
+[tasks."azure:upload"]
+description = "Deploy app to Azure App Service"
+depends = ["azure:group"]
+run = "az webapp up --name pyalmanaque --resource-group pyalmanaque-rg --runtime 'PYTHON:3.13' --sku F1 --location westeurope"
+
+[tasks."azure:configure"]
+description = "Set gunicorn startup command"
+depends = ["azure:upload"]
+run = "az webapp config set --name pyalmanaque --resource-group pyalmanaque-rg --startup-file 'gunicorn --bind 0.0.0.0:8000 app:app'"
+
+[tasks.deploy]
+description = "Full deploy to Azure"
+depends = ["azure:configure"]
+run = "echo 'Deployed to https://pyalmanaque.azurewebsites.net'"
