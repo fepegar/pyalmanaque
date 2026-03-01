@@ -1,4 +1,5 @@
 .venv/
+.azure/
 __pycache__/
 *.pyc
 verify_*.py
