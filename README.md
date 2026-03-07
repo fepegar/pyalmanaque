@@ -125,6 +125,19 @@ Results are cached in an in-memory dict (`_image_cache`) keyed by `"{lang}:{titl
 
 The `<img>` tag in the template uses `referrerpolicy="no-referrer"` to prevent Wikimedia's hotlink protection from blocking the thumbnails.
 
+### Security hardening
+
+The Flask app now sends a restrictive set of response headers on every page:
+
+- `Content-Security-Policy` limits resources to the local app and HTTPS-hosted Wikimedia images.
+- `X-Frame-Options: DENY` and `Cross-Origin-Opener-Policy: same-origin` reduce clickjacking and window-opener risks.
+- `X-Content-Type-Options: nosniff`, `Referrer-Policy`, and `Permissions-Policy` disable unnecessary browser features and tighten default behavior.
+- `Strict-Transport-Security` is added automatically on HTTPS requests so browsers keep using TLS after the first secure visit.
+
+Wikipedia thumbnail URLs are also validated before rendering, and only `https://*.wikimedia.org` images are accepted.
+
+These hardening steps improve the app's security posture, but they do not automatically clear a Chrome Safe Browsing warning on a shared `*.azurewebsites.net` hostname. If the deployed site is still flagged, check the domain in the [Google Transparency Report](https://transparencyreport.google.com/safe-browsing/search?hl=en), request a review after remediation, and consider moving the app to a custom domain with its own reputation history.
+
 ### The template (`templates/index.html`)
 
 The single Jinja2 template renders all the data into a centered, single-column layout. Key details:
